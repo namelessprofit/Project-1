@@ -23,9 +23,9 @@ App will include log-in/auth, database, form for entries, a place to view to you
 * allergy
 * recipe search
 
-## Drean
+## Dream
 
-monetize the app as a marketign tool for restaurant and food bloggers or anyone in the food industry.
+monetize the app as a marketing tool for restaurant and food bloggers or anyone in the food industry.
 
 ## Built With   
 
