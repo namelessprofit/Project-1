@@ -5,23 +5,33 @@ Your diary will be stored in the cloud so no need to worry about wasting space o
 
 ## More Info on the app
 
-App is as app does.
+Instgram for food! Log all of your meals in a neat diary and share your posts with the world.
+The landing page will give you the option to sign up or log in, once logged in a user will be able to add entries
+of their meals and leave a diary like comment include information like calories count, description of food, and what you
+were doing and who you were eating with. Tag your friends and share on other social media platforms.
 
-### Other Details
 
-In which we write more stuff.
+### Must have
 
-### More Details
+App will include log-in/auth, database, form for entries, a place to view to your entries.
 
-More stuff if needed.
+### Would be nice
+
+* upload image
+* search function
+* third party integration/ social media
+* allergy
+* recipe search
+
+## Drean
+
+monetize the app as a marketign tool for restaurant and food bloggers or anyone in the food industry.
 
 ## Built With   
 
-*MongoDB, Express, Node* - **MEN** stack   
-
-## Versioning
-
-We can use [SemVer](http://semver.org/) for versioning. Say 1.0.0-alpha
+*MongoDB, Express, Node* - **MEN** stack  
+JS, Jquery Bootstrap,mongoose, express, html, css
+lots of love  
 
 ## Authors
 
@@ -36,6 +46,9 @@ This project is licensed under the MIT License - or something similar
 
 ## Acknowledgments
 
+* Justing Castilla
+* Jean Weatherwax
+* Tunely....
 * Hat tip to anyone who's code was used
 * Inspiration
 * etc
