@@ -2,19 +2,19 @@ var db = require('./models');
 
 var userList = [];
 userList.push({
-    firstName: 'Archy',
+    userName: 'Archy',
     lastName: 'Posada',
     bio: 'GA student working on the railway.',
     profilePic: 'null'
 });
 userList.push({
-    firstName: 'Shaya',
+    userName: 'Shaya',
     lastName: 'Nelson',
     bio: 'GA student working on the planes.',
     profilePic: 'null'
 });
 userList.push({
-    firstName: 'Gabriella',
+    userName: 'Gabriella',
     lastName: 'Choy',
     bio: 'GA student working on the boatsway.',
     profilePic: 'null'
@@ -23,11 +23,22 @@ console.log("users have been added");
 
 var entryList = [];
 entryList.push({
-time: Date,
-foodOrigin: "Mexico",
-foodDescription: "Enchiladas with beans and rice. Queso fresco, salsa, guacamole.",
-allergies: ["null"],
-image: "null",
+  dishName: "Enchiladas",
+  foodOrigin: "Mexico",
+  calories: 270,
+  foodDescription: "Vegan cheese, gluten free, organic usda avocado",
+});
+entryList.push({
+  dishName: "Quiche",
+  foodOrigin: "France?",
+  calories: 350,
+  foodDescription: "Powered by organic french people!",
+});
+entryList.push({
+  dishName: "Fruit Bowl",
+  foodOrigin: "World",
+  calories: 350,
+  foodDescription: "Powered by organic Greek people!",
 });
 
 userList.forEach(function(user) {
@@ -35,12 +46,23 @@ userList.forEach(function(user) {
 });
 
 
-db.user.remove({}, function(err, user){
+db.User.remove({}, function(err, user){
 
- db.user.create(userList, function(err, user){
+ db.User.create(userList, function(err, users){
    if (err) { return console.log('ERROR', err); }
-   console.log("all user:", user);
-   console.log("created", user.length, "user");
+   console.log("all users:", users);
+   console.log("created", user.length, "users");
+   process.exit();
+ });
+
+});
+
+db.Entry.remove({}, function(err, entry){
+
+ db.User.create(userList, function(err, users){
+   if (err) { return console.log('ERROR', err); }
+   console.log("all entries:", entries);
+   console.log("created", entry.length, "entries");
    process.exit();
  });
 
