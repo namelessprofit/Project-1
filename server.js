@@ -8,7 +8,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var userController = require('./controllers/userController');
 
 
-// JSON API Endpoints
 app.get('/', userController.create);
 app.post('/user', userController.create);
 app.delete('/user/:userId', userController.destroy);
