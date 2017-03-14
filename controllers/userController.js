@@ -25,16 +25,15 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-    console.log('Updating with Info', req.body);
+    console.log('Updating user', req.body);
     db.User.findById(req.params.userId, function(err, foundUser) {
         if (err) {
             console.log('usersController.update.error', err);
         }
-        foundUser.firstName = req.body.firstName;
-        foundUser.lastName = req.body.lastName;
+        foundUser.userName = req.body.userName;
         foundUser.save(function(err, savedUser) {
             if (err) {
-                console.log('saving altered user failed');
+                console.log('saving user failed');
             }
         });
     });
