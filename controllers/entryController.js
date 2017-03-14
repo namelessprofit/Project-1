@@ -34,3 +34,29 @@ function destroy(req, res) {
    }
  });
 }
+
+function update(req, res) {
+ db.User.findById(req.params.userId, function(err, foundUser) {
+   console.log(foundUser);
+   var correctEntry = foundUser.entry.id(req.params.entryId);
+   if (correctUser) {
+     console.log(req.body);
+     correctEntry.entryId = req.body.entryId;
+     correctEntry.name = req.body.name; //not sure what params to use here, just following the tunely setup
+     foundUser.save(function(err, saved) {
+       console.log('UPDATED', correctEntry, 'IN ', saved.entry);
+       res.json(correctEntry);
+     });
+   } else {
+     res.send(404);
+   }
+ });
+}
+
+
+module.exports = {
+ index: index,
+ create: create,
+ update: update,
+ destroy: destroy
+};
