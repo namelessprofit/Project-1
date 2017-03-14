@@ -1,4 +1,4 @@
- # Project Title
+# Healthy Diary
 
 Store all of your favorite meals and recipes in one place and keep it with you everywhere you go.
 Your diary will be stored in the cloud so no need to worry about wasting space on your phone.
