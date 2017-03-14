@@ -8,18 +8,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var userController = require('./controllers/userController');
 
 
-app.get('/', userController.create);
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+
 app.post('/user', userController.create);
 app.delete('/user/:userId', userController.destroy);
-
-//Resources: User && Posts
-//post => user = create New User
-//get => form for creating a new user
-//delete => delete a user
-//
-//
-//
-
 
 
 app.listen(process.env.PORT || 3000, function () {

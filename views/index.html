@@ -23,7 +23,7 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="/css/creative.min.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,18 +50,15 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Diary</a>
+                        <a class="page-scroll" href="#entryForm">Entry</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Favorite Meals</a>
-                    </li>
-                    <!-- <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#favoriteMeals">Favorite Meals</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#Team">Team</a>
                     </li>
-                </ul> -->
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -73,18 +70,18 @@
             <div class="header-content-inner">
                 <h1 id="homeHeading">Healthy Diary</h1>
                 <hr>
-                <p>Store all of your favorite meals and recipesin one place and keep it with you everywhere you go. Your diary will be stored in the cloud so no need to worry about wasting space on your phone.</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">My diary</a>
+                <p>Store all of your favorite meals and recipes in one place and keep it with you everywhere you go. Your diary will be stored in the cloud so no need to worry about wasting space on your phone.</p>
+                <a href="#entry" class="btn btn-primary btn-xl page-scroll">My diary</a>
             </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <section class="bg-primary" id="entryForm">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <div class="container">
-                        <form id="contact" action="" method="post">
+                        <form id="entry" action="" method="post">
 
                             <fieldset>
                                 <input placeholder="Dish Name" type="text" required autofocus>
@@ -111,7 +108,7 @@
         </div>
     </section>
 
-    <section id="favorite meals">
+    <section id="favoriteMeals">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -121,7 +118,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row" id="savedMeals">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
 
@@ -138,25 +135,58 @@
 
 
 
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Created by the Dream Team!</h2>
-                    <hr class="primary">
-                    <p>What do you think about adding our pics here?</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>Image here</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p>Image here</p>
-                </div>
+      <section id="team">
+        <div class="container wow fadeInUp">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="section-title">Our Team</h3>
+              <div class="section-title-divider"></div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="member">
+                <div class="pic"><img src="img/gaby.jpg" style="height:190px;width:139px;"></div>
+                <h4>Gabriella Choy</h4>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="member">
+                <div class="pic"><img src="img/archy.jpg" style="height:190px;width:139px;"></div>
+                <h4>Archy Posada</h4>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="member">
+                <div class="pic"><img src="img/archy.jpg" style="height:190px;width:139px;"></div>
+                <h4>Shaya Nelson</h4>
+                <div class="social">
+                  <a href=""><i class="fa fa-twitter"></i></a>
+                  <a href=""><i class="fa fa-facebook"></i></a>
+                  <a href=""><i class="fa fa-google-plus"></i></a>
+                  <a href=""><i class="fa fa-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-    </section>
+      </section>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
