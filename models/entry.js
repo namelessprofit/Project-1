@@ -7,7 +7,6 @@ var EntrySchema = new Schema({
     foodDescription: String,
     allergies: [String],
     image: String,
-    geoLocation: String
 });
 
 var Entry = mongoose.model('Entry',
