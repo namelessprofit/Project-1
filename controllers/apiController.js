@@ -6,8 +6,13 @@ function index(req, res) {
        base_url: "localhost:3000",
        endpoints : [
          {
-           method: "GET", path: "/api",description: "Describes available endpoints" 
+           method: "GET", path: "/", description: "Describes available endpoints" 
+         },
+         {
+           method: "POST", path:"/user", userController.create);
          }
+         
+           
        ]
      });
     }
