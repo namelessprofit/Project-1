@@ -7,12 +7,14 @@ userList.push({
     bio: 'GA student working on the railway.',
     profilePic: 'null'
 });
+
 userList.push({
     userName: 'Shaya',
     lastName: 'Nelson',
     bio: 'GA student working on the planes.',
     profilePic: 'null'
 });
+
 userList.push({
     userName: 'Gabriella',
     lastName: 'Choy',
@@ -23,66 +25,59 @@ console.log("users have been added");
 
 var entryList = [];
 entryList.push({
-  dishName: "Enchiladas",
-  foodOrigin: "Mexico",
-  calories: 270,
-  foodDescription: "Vegan cheese, gluten free, organic usda avocado",
-});
-entryList.push({
-  dishName: "Quiche",
-  foodOrigin: "France?",
-  calories: 350,
-  foodDescription: "Powered by organic french people!",
-});
-entryList.push({
-  dishName: "Fruit Bowl",
-  foodOrigin: "World",
-  calories: 350,
-  foodDescription: "Powered by organic Greek people!",
+    dishName: "Enchiladas",
+    foodOrigin: "Mexico",
+    calories: 270,
+    foodDescription: "Vegan cheese, gluten free, organic usda avocado"
 });
 
 entryList.push({
- dishName: "Quiche",
- foodOrigin: "France?",
- calories: 350,
- foodDescription: "Powered by organic french people!"
+    dishName: "Quiche",
+    foodOrigin: "France?",
+    calories: 350,
+    foodDescription: "Powered by organic french people!"
 });
 
 entryList.push({
- dishName: "Fruit Bowl",
- foodOrigin: "World",
- calories: 350,
- foodDescription: "Powered by organic Greek people!"
+    dishName: "Fruit Bowl",
+    foodOrigin: "World",
+    calories: 350,
+    foodDescription: "Powered by organic Greek people!"
 });
 
-db.User.remove({}, function(err, user){
-
- db.User.create(userList, function(err, users){
-   if (err) { return console.log('ERROR', err); }
-   console.log("all users:", users);
-   console.log("created", user.length, "users");
-   process.exit();
- });
-
+entryList.push({
+    dishName: "Quiche",
+    foodOrigin: "France?",
+    calories: 350,
+    foodDescription: "Powered by organic french people!"
 });
 
-db.Entry.remove({}, function(err, entry){
-
- db.User.create(userList, function(err, users){
-   if (err) { return console.log('ERROR', err); }
-   console.log("all entries:", entries);
-   console.log("created", entry.length, "entries");
-   process.exit();
- });
-
+entryList.push({
+    dishName: "Fruit Bowl",
+    foodOrigin: "World",
+    calories: 350,
+    foodDescription: "Powered by organic Greek people!"
 });
 
-db.Entry.remove({}, function(err, entry){
+db.User.remove({}, function(err, user) {
 
-db.Entry.create(entryList, function(err, entries){
-  if (err) { return console.log('ERROR', err); }
-  console.log("all entries:", entries);
-  console.log("created", entryList.length, "entries");
-  process.exit();
+    db.User.create(userList, function(err, users) {
+        if (err) {
+            return console.log('ERROR', err);
+        }
+        console.log("all users:", users);
+        console.log("created", user.length, "users");
+    });
 });
+
+db.Entry.remove({}, function(err, entry) {
+
+    db.Entry.create(entryList, function(err, entries) {
+        if (err) {
+            return console.log('ERROR', err);
+        }
+        console.log("all entries:", entries);
+        console.log("created", entry.length, "entries");
+        process.exit();
+    });
 });
