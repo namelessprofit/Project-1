@@ -7,7 +7,8 @@ $(document).ready(function() {
    success: renderMultipleEntries
  });
 
- $('#entry form').on('submit', function(e) {
+
+ $('#entryForm form').on('submit', function(e) {
    e.preventDefault();
    var formData = $(this).serialize();
    console.log('formData', formData);
@@ -19,11 +20,13 @@ $(document).ready(function() {
  });
 
 // catch and handle the click on an entry add button
-// $('#entry').on('click', '.add-entry', handleAddEntryClick )
 
-// Save an entry modal save button
-// $('#saveEntry').on('click', handleNewEntrySubmit);
-// });
+$('#entry').on('click', '.add-entry', handleAddEntryClick )
+
+Save an entry modal save button
+$('#saveEntry').on('click', handleNewEntrySubmit);
+});
+
 
 // function renderMultipleEntries(entries) {
 //   entry.forEach(function(entry) {
@@ -35,6 +38,7 @@ $(document).ready(function() {
 function renderEntry(entry) {
  console.log('rendering entry', entry);
  var entryHtml = (`
+
    <form id="entry" action="" method="post">
        <fieldset>
            <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" required autofocus>
@@ -77,6 +81,7 @@ function renderEntry(entry) {
 //  e.preventDefault();
 //  var $modal = $('#modal');
 //  var $entryField = $modal.find('entryField');
+
 
  // get data from modal fields
  // the server expects to see the keys,..... so we MUST use them.
