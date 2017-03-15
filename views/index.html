@@ -81,28 +81,28 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <div class="container">
-                        <form id="entry" action="" method="post">
+                        <form id="entry" action="/entry/create" method="post">
                             <fieldset>
-                                <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" required>
+                                <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" name="userName" required>
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;"required>
+                                <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;" name="dishName" required>
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px;">
+                                <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px; "name="origin">
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;">
+                                <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;" name="calories">
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 275px;"></textarea>
+                                <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 275px;" name="ingredients"></textarea>
                             </fieldset>
                             <fieldset>
-                                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                                <button type="submit" id="contact-submit">Submit</button>
                             </fieldset>
                         </form>
                     </div>
