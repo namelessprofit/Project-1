@@ -37,6 +37,15 @@ $('#saveEntry').on('click', handleNewEntrySubmit);
 // this function takes a single entry and renders it to the page
 function renderEntry(entry) {
  console.log('rendering entry', entry);
+
+// $.get('/event/findAll', function (items) {
+//   items.forEach(function(item){
+// console.log(item);
+//     var newHTML = "fieldset" + item + "/fieldset";
+//     $('#savedMeals').prepend(newHTML);
+//   })
+// })
+
  var entryHtml = (`
 
    <form id="entry" action="" method="post">
