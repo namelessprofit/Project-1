@@ -2,15 +2,17 @@ var db = require('../models');
 var Entry = db.Entry;
 
 function index(req, res) {
-    db.User.findById(req.params.UserId, function(err, foundUser) {
-        console.log('responding with entry:', foundUser.entry);
-        res.json(foundUser.entry);
+    db.Entry.find({}, function(err, entries) {
+        if(err){return console.log("INDEX ERR: ", err);}
+        console.log('responding with entry:', entries);
+        res.json(entries);
     });
 }
 
 function create(req, res) {
 console.log(req.body);
     var newEntry = new Entry({
+        "userName": req.body.userName,
         "dishName": req.body.dishName,
         "foodOrigin": req.body.origin,
         "calories": req.body.calories,

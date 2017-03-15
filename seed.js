@@ -23,66 +23,47 @@ console.log("users have been added");
 
 var entryList = [];
 entryList.push({
-  dishName: "Enchiladas",
-  foodOrigin: "Mexico",
-  calories: 270,
-  foodDescription: "Vegan cheese, gluten free, organic usda avocado",
+    userName: "Archy",
+    dishName: "Enchiladas",
+    foodOrigin: "Mexico",
+    calories: 270,
+    foodDescription: "Vegan cheese, gluten free, organic usda avocado"
 });
 entryList.push({
-  dishName: "Quiche",
-  foodOrigin: "France?",
-  calories: 350,
-  foodDescription: "Powered by organic french people!",
+    userName: "Archy",
+    dishName: "Quiche",
+    foodOrigin: "France?",
+    calories: 350,
+    foodDescription: "Powered by organic french people!"
 });
 entryList.push({
-  dishName: "Fruit Bowl",
-  foodOrigin: "World",
-  calories: 350,
-  foodDescription: "Powered by organic Greek people!",
+    userName: "Archy",
+    dishName: "Fruit Bowl",
+    foodOrigin: "World",
+    calories: 350,
+    foodDescription: "Powered by organic Greek people!"
 });
 
-entryList.push({
- dishName: "Quiche",
- foodOrigin: "France?",
- calories: 350,
- foodDescription: "Powered by organic french people!"
+db.User.remove({}, function(err, user) {
+
+    db.User.create(userList, function(err, users) {
+        if (err) {
+            return console.log('ERROR', err);
+        }
+        console.log("all users:", users);
+        console.log("created", user.length, "users");
+    });
 });
 
-entryList.push({
- dishName: "Fruit Bowl",
- foodOrigin: "World",
- calories: 350,
- foodDescription: "Powered by organic Greek people!"
-});
 
-db.User.remove({}, function(err, user){
+db.Entry.remove({}, function(err, entry) {
 
- db.User.create(userList, function(err, users){
-   if (err) { return console.log('ERROR', err); }
-   console.log("all users:", users);
-   console.log("created", user.length, "users");
-   process.exit();
- });
-
-});
-
-db.Entry.remove({}, function(err, entry){
-
- db.User.create(userList, function(err, users){
-   if (err) { return console.log('ERROR', err); }
-   console.log("all entries:", entries);
-   console.log("created", entry.length, "entries");
-   process.exit();
- });
-
-});
-
-db.Entry.remove({}, function(err, entry){
-
-db.Entry.create(entryList, function(err, entries){
-  if (err) { return console.log('ERROR', err); }
-  console.log("all entries:", entries);
-  console.log("created", entryList.length, "entries");
-  process.exit();
-});
+    db.Entry.create(entryList, function(err, entries) {
+        if (err) {
+            return console.log('ERROR', err);
+        }
+        console.log("all entries:", entries);
+        console.log("created", entryList.length, "entries");
+        process.exit();
+    });
 });
