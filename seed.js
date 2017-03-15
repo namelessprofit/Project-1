@@ -41,10 +41,19 @@ entryList.push({
   foodDescription: "Powered by organic Greek people!",
 });
 
-userList.forEach(function(user) {
- user.entry = entryList;
+entryList.push({
+ dishName: "Quiche",
+ foodOrigin: "France?",
+ calories: 350,
+ foodDescription: "Powered by organic french people!"
 });
 
+entryList.push({
+ dishName: "Fruit Bowl",
+ foodOrigin: "World",
+ calories: 350,
+ foodDescription: "Powered by organic Greek people!"
+});
 
 db.User.remove({}, function(err, user){
 
@@ -66,4 +75,14 @@ db.Entry.remove({}, function(err, entry){
    process.exit();
  });
 
+});
+
+db.Entry.remove({}, function(err, entry){
+
+db.Entry.create(entryList, function(err, entries){
+  if (err) { return console.log('ERROR', err); }
+  console.log("all entries:", entries);
+  console.log("created", entryList.length, "entries");
+  process.exit();
+});
 });

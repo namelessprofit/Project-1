@@ -7,6 +7,7 @@ $(document).ready(function() {
    success: renderMultipleEntries
  });
 
+
  $('#entryForm form').on('submit', function(e) {
    e.preventDefault();
    var formData = $(this).serialize();
@@ -19,11 +20,13 @@ $(document).ready(function() {
  });
 
 // catch and handle the click on an entry add button
+
 $('#entry').on('click', '.add-entry', handleAddEntryClick )
 
 Save an entry modal save button
 $('#saveEntry').on('click', handleNewEntrySubmit);
 });
+
 
 // function renderMultipleEntries(entries) {
 //   entry.forEach(function(entry) {
@@ -36,48 +39,49 @@ function renderEntry(entry) {
  console.log('rendering entry', entry);
  var entryHtml = (`
 
-   <section id="favoriteMeals">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Your saved meals and recipes.</h2>
-                <hr class="primary">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row" id="savedMeals">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+   <form id="entry" action="" method="post">
+       <fieldset>
+           <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" required autofocus>
+       </fieldset>
+       <hr>
+       <fieldset>
+           <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;"required>
+       </fieldset>
+       <hr>
+       <fieldset>
+           <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px;">
+       </fieldset>
+       <hr>
+       <fieldset>
+           <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;">
+       </fieldset>
+       <hr>
+       <fieldset>
+           <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 275px;"></textarea>
+       </fieldset>
+       <fieldset>
+           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+       </fieldset>
+   </form>
    `);
- $('#favoriteMeals').prepend(entryHtml);
+ $('#savedMeals').prepend(entryHtml);
 }
 
 // When the add entry button is clicked, display the modal
-function handleAddEntryClick(e) {
- console.log('add-entry clicked');
- var currentEntryId = $(this).closest('.album').data('entry-id');
- console.log('id', currentEntryId);
- $('#entryModal').data('user-id', currentUserId);
- $('#entryModal').modal(); //display the modal
-}
+// function handleAddEntryClick(e) {
+//  console.log('add-entry clicked');
+//  var currentEntryId = $(this).closest('.album').data('entry-id');
+//  console.log('id', currentEntryId);
+//  $('#entryModal').data('user-id', currentUserId);
+//  $('#entryModal').modal(); //display the modal
+// }
+//
+// //when the entry modal submit button is clicked
+// function handleNewEntrySubmit(e) {
+//  e.preventDefault();
+//  var $modal = $('#modal');
+//  var $entryField = $modal.find('entryField');
 
-//when the entry modal submit button is clicked
-function handleNewEntrySubmit(e) {
- e.preventDefault();
- var $modal = $('#entryModal');
- var $entryField = $modal.find('entryField');
 
  // get data from modal fields
  // the server expects to see the keys,..... so we MUST use them.

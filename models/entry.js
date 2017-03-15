@@ -5,7 +5,7 @@ var EntrySchema = new Schema({
     dishName: String,
     foodOrigin: String,
     calories: Number,
-    foodDescription: String,
+    foodDescription: String
 });
 
 var Entry = mongoose.model('Entry',
