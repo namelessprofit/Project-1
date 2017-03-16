@@ -30,6 +30,7 @@ console.log(req.body);
 function destroy(req, res) {
     console.log(req.params.EntryId);
     db.Entry.findOneAndRemove({_id: req.params.EntryId}, function(err, deadEntry) {
+    console.log('loggin params', req.params.EntryId);
         // TODO: What happens if there is an error?
         console.log(deadEntry);
         res.json(deadEntry);
@@ -61,7 +62,6 @@ function findAll(req, res) {
 }
 
 module.exports = {
-    findAll: findAll,
     index: index,
     create: create,
     destroy: destroy

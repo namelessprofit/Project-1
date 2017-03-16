@@ -1,6 +1,7 @@
 $(document).ready(function() {
     console.log('app.js loaded');
 
+
     $.ajax({
         method: 'GET',
         url: '/api/entry', // creating api of users... check on this not sure what's going on
@@ -24,19 +25,15 @@ $(document).ready(function() {
         $(this).trigger("reset");
     });
 
-        $.ajax({
-            method: 'DELETE',
-            url: '/api/entry/:EntryId',
-            success: removeEntries
-        });
-    
-    $('.btn btn-danger delete-entry').on('submit', function(e) {
-        e.preventDefault();
-        $.delete('/api/entry/:EntryId', formData, function(entry) {
-            console.log('deleted post', entry);
-            removeEntries(entry); // render the servers response
-        });
-    })
+    $('#savedMeals').on('click', '.taco', function(e) {
+        var deletedEntryId = $(this).closest('.entry-class').data('data-id');
+        console.log('stuff!!', deletedEntryId);
+        console.log("I AM CLICKED FOR DELETE");
+        // $.delete('/api/entry/:EntryId', formData, function(entry) {
+        console.log('deleted post');
+        //removeEntries(deletedEntryId); // render the servers response
+    });
+
 });
 
 function renderMultipleEntries(entries) {
@@ -52,8 +49,7 @@ function renderEntry(entry) {
 
     var entryHtml = (`
 
-   <form id="entry" action="" method="post" >
-
+<div class="entry-class" data-id=${entry._id}>
       <fieldset>
            <span>${entry.userName}</span>
        </fieldset>
@@ -72,28 +68,30 @@ function renderEntry(entry) {
        <fieldset>
            <button class='btn btn-info edit-entry'>Edit Entry</button>
        </fieldset>
-       <fieldset>
-           <button class='btn btn-danger delete-entry' data-id="${entry._id}">Delete Entry</button>
-       </fieldset>
-   </form>
+      <button class='btn btn-danger taco'>Delete Entry</button>
+</div>
    `);
     $('#savedMeals').prepend(entryHtml);
-}
+};
 
-    function removeEntries(entries) {
-        var deletedEntryId = data._id
-        console.log('entries removed', deletedEntryId);
-        $('div[data-entry-id=' + deletedEntryId + ']').remove();
-    }
-    //TODO: Prevent Default
-    // AJAX REQUEST
-    // delete
-    // url; api/entry/ + entryID you grab from the delete button
-    // success: on success, remove the entry from the view via jquery.
-    // });
+function removeEntries(e) {
+    console.log('entries removed' + entryId);
+    $.ajax({
+        url: '/api/entry/' + entryId,
+        method: 'DELETE',
+        success: deleteEntrySuccess
+    });
+};
+
+function deleteEntrySuccess(data) {
+    var deletedEntryId = data._id;
+    console.log('removing following entry');
+    $('div[data-entry-id=' + deletedEntryId + ']').remove();
+};
+
 // When the add entry button is clicked
 function handleAddEntryClick(e) {
     console.log('add-entry clicked');
     var currentEntryId = $(this).closest('.entry').data('entry-id');
     console.log('id', currentEntryId);
-}
+};
