@@ -85,12 +85,14 @@ function removeEntries(e) {
         method: 'DELETE',
         success: deleteEntrySuccess
     });
+    location.reload();  
 };
 
 function deleteEntrySuccess(data) {
     var deletedEntryId = data._id;
     console.log('removing following entry');
     $('div[data-entry-id=' + deletedEntryId + ']').remove();
+
 };
 
 // When the add entry button is clicked
