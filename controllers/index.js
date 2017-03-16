@@ -1,4 +1,5 @@
 module.exports = {
  user: require('./userController'),
- userEntry: require('./entryController')
+ userEntry: require('./entryController'),
+ controllerEntry: require('./entryController')
 }

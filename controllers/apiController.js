@@ -16,7 +16,7 @@ function index(req, res) {
             },
             {
                 method: "DELETE",
-                path: "/api/entry/:EntryId",
+                path: "/api/userEntry/:EntryId",
                 controllerEntry.destroy
             }
 
@@ -25,7 +25,7 @@ function index(req, res) {
 }
 
 module.exports = {
-    index: index
-    create: create
+    index: index,
+    create: create,
     destroy:destroy
 }
