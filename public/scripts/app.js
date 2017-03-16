@@ -1,6 +1,7 @@
 $(document).ready(function() {
  console.log('app.js loaded');
 
+
  // $.ajax({
  //   method: 'GET',
  //   url: '/api/user', // creating api of users... check on this not sure what's going on
@@ -15,8 +16,13 @@ $(document).ready(function() {
 
  $('#entryForm form').on('submit', function(e) {
    e.preventDefault();
-    // TODO: Send an object literal, not a serialized query string
-   var formData = $(this).serialize();
+   var formData = ({
+       userName: $('#userName').val(),
+       dishName: $('#dishName').val(),
+       origin: $('#origin').val(),
+       calories: $('#calories').val(),
+       ingredients: $('#ingredients').val()
+   });
    console.log('formData', formData);
    $.post('/api/entry', formData, function(entry) {
      console.log('entry after post', entry);
@@ -25,39 +31,42 @@ $(document).ready(function() {
    $(this).trigger("reset");
  });
 
-// catch and handle the click on an entry add button
-// $('#entry').on('click', '.add-entry', handleAddEntryClick );
-// $('#entry').on('click', '.edit-entry', handleAlbumEditClick);
-// $('#entry').on('click', '.save-entry', handleSaveChangesClick);
-
-// Save an entry
-// $('#saveEntry').on('click', handleNewEntrySubmit);
 });
 
-
 function renderMultipleEntries(entries) {
-
   console.log(entries);
   entries.forEach(function(entry) {
     renderEntry(entry);
   });
 }
-
 // this function takes a single entry and renders it to the page
 function renderEntry(entry) {
  console.log('rendering entry', entry);
 
-// $.get('/event/findAll', function (items) {
-//   items.forEach(function(item){
-// console.log(item);
-//     var newHTML = "fieldset" + item + "/fieldset";
-//     $('#savedMeals').prepend(newHTML);
-//   })
-// })
 
+$('#btn btn-danger').on('submit', function deleteEntry(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/entry/:EntryId',
+      success: removeEntries
+})
+})
+function removeEntries(entries) {
+var deletedEntryId = data._id
+console.log('entries removed', deletedEntryId);
+$('div[data-entry-id=' + deletedEntryId + ']').remove();
+}
+//TODO: Prevent Default
+  // AJAX REQUEST
+  // delete
+  // url; api/entry/ + entryID you grab from the delete button
+  // success: on success, remove the entry from the view via jquery.
+// });
  var entryHtml = (`
 
-   <form id="entry" action="" method="post">
+   <form id="entry" action="" method="post" >
+
       <fieldset>
            <span>${entry.userName}</span>
        </fieldset>
@@ -65,16 +74,19 @@ function renderEntry(entry) {
            <span>${entry.dishName}</span>
        </fieldset>
        <fieldset>
-           <span>${entry.foodOrigin}</span>
+           <span>${entry.origin}</span>
        </fieldset>
        <fieldset>
            <span>${entry.calories}</span>
        </fieldset>
        <fieldset>
-           <span>${entry.foodDescription}</span>
+           <span>${entry.ingredients}</span>
        </fieldset>
        <fieldset>
-           <button name="edit" type="edit" id="contact-edit" data-submit="...Sending">Edit Entry</button>
+           <button class= 'btn btn-info edit-entry'>Edit Entry</button>
+       </fieldset>
+       <fieldset>
+           <button class= 'btn btn-danger delete-entry' data-id="${entry._id}">Delete Entry</button>
        </fieldset>
    </form>
    `);
@@ -87,16 +99,3 @@ function handleAddEntryClick(e) {
  var currentEntryId = $(this).closest('.entry').data('entry-id');
  console.log('id', currentEntryId);
 }
-
-// //when the entry modal submit button is clicked
-// function handleNewEntrySubmit(e) {
-//  e.preventDefault();
-//  var $modal = $('#modal');
-//  var $entryField = $modal.find('entryField');
-
-
- // get data from modal fields
- // the server expects to see the keys,..... so we MUST use them.
-
-
-//Get data from modal fields
