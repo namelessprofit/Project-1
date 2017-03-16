@@ -29,7 +29,7 @@ $(document).ready(function() {
             url: '/api/entry/:EntryId',
             success: removeEntries
         });
-
+    
     $('.btn btn-danger delete-entry').on('submit', function(e) {
         e.preventDefault();
         $.delete('/api/entry/:EntryId', formData, function(entry) {
