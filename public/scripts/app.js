@@ -24,18 +24,22 @@ $(document).ready(function() {
         });
         $(this).trigger("reset");
     });
-
+//deleting an meal entry
     $('#savedMeals').on('click', '.taco', function(e) {
-        var deletedEntryId = $(this).closest('.entry-class').data('data-id');
+        var deletedEntryId = $(this).closest('.entry-class').data('meal-id');
         console.log('stuff!!', deletedEntryId);
+        console.log(this);
         console.log("I AM CLICKED FOR DELETE");
         // $.delete('/api/entry/:EntryId', formData, function(entry) {
         console.log('deleted post');
-        //removeEntries(deletedEntryId); // render the servers response
+        removeEntries(deletedEntryId); // render the servers response
+
     });
 
+//document ready closes here.
 });
-
+//
+//function shows multiple entries that are saved
 function renderMultipleEntries(entries) {
     console.log(entries);
     entries.forEach(function(entry) {
@@ -49,7 +53,7 @@ function renderEntry(entry) {
 
     var entryHtml = (`
 
-<div class="entry-class" data-id=${entry._id}>
+<div class="entry-class" data-meal-id=${entry._id}>
       <fieldset>
            <span>${entry.userName}</span>
        </fieldset>
@@ -75,9 +79,9 @@ function renderEntry(entry) {
 };
 
 function removeEntries(e) {
-    console.log('entries removed' + entryId);
+    console.log('entries removed' + e);
     $.ajax({
-        url: '/api/entry/' + entryId,
+        url: '/api/entry/' + e,
         method: 'DELETE',
         success: deleteEntrySuccess
     });
