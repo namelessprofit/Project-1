@@ -43,5 +43,4 @@ module.exports = {
     index: index,
     create: create,
     destroy: destroy,
-    update: update
 };

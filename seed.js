@@ -7,14 +7,12 @@ userList.push({
     bio: 'GA student working on the railway.',
     profilePic: 'null'
 });
-
 userList.push({
     userName: 'Shaya',
     lastName: 'Nelson',
     bio: 'GA student working on the planes.',
     profilePic: 'null'
 });
-
 userList.push({
     userName: 'Gabriella',
     lastName: 'Choy',
@@ -25,34 +23,21 @@ console.log("users have been added");
 
 var entryList = [];
 entryList.push({
+    userName: "Archy",
     dishName: "Enchiladas",
     foodOrigin: "Mexico",
     calories: 270,
     foodDescription: "Vegan cheese, gluten free, organic usda avocado"
 });
-
 entryList.push({
+    userName: "Archy",
     dishName: "Quiche",
     foodOrigin: "France?",
     calories: 350,
     foodDescription: "Powered by organic french people!"
 });
-
 entryList.push({
-    dishName: "Fruit Bowl",
-    foodOrigin: "World",
-    calories: 350,
-    foodDescription: "Powered by organic Greek people!"
-});
-
-entryList.push({
-    dishName: "Quiche",
-    foodOrigin: "France?",
-    calories: 350,
-    foodDescription: "Powered by organic french people!"
-});
-
-entryList.push({
+    userName: "Archy",
     dishName: "Fruit Bowl",
     foodOrigin: "World",
     calories: 350,
@@ -70,6 +55,7 @@ db.User.remove({}, function(err, user) {
     });
 });
 
+
 db.Entry.remove({}, function(err, entry) {
 
     db.Entry.create(entryList, function(err, entries) {
@@ -77,7 +63,7 @@ db.Entry.remove({}, function(err, entry) {
             return console.log('ERROR', err);
         }
         console.log("all entries:", entries);
-        console.log("created", entry.length, "entries");
+        console.log("created", entryList.length, "entries");
         process.exit();
     });
 });

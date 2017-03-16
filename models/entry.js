@@ -2,10 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var EntrySchema = new Schema({
+    userName: String,
     dishName: String,
-    foodOrigin: String,
+    origin: String,
     calories: Number,
-    foodDescription: String
+    ingredients: String
 });
 
 var Entry = mongoose.model('Entry',

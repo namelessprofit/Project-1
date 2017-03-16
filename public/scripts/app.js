@@ -1,16 +1,28 @@
 $(document).ready(function() {
  console.log('app.js loaded');
 
+
+ // $.ajax({
+ //   method: 'GET',
+ //   url: '/api/user', // creating api of users... check on this not sure what's going on
+ //   success: renderUsers
+ // });
+
  $.ajax({
    method: 'GET',
-   url: '/api/user', // creating api of users... check on this not sure what's going on
+   url: '/api/entry', // creating api of users... check on this not sure what's going on
    success: renderMultipleEntries
  });
 
-
  $('#entryForm form').on('submit', function(e) {
    e.preventDefault();
-   var formData = $(this).serialize();
+   var formData = ({
+       userName: $('#userName').val(),
+       dishName: $('#dishName').val(),
+       origin: $('#origin').val(),
+       calories: $('#calories').val(),
+       ingredients: $('#ingredients').val()
+   });
    console.log('formData', formData);
    $.post('/api/entry', formData, function(entry) {
      console.log('entry after post', entry);
@@ -19,81 +31,71 @@ $(document).ready(function() {
    $(this).trigger("reset");
  });
 
-// catch and handle the click on an entry add button
-
-$('#entry').on('click', '.add-entry', handleAddEntryClick )
-
-Save an entry modal save button
-$('#saveEntry').on('click', handleNewEntrySubmit);
 });
 
-
-// function renderMultipleEntries(entries) {
-//   entry.forEach(function(entry) {
-//     renderEntry(entry);
-//   });
-// }
-
+function renderMultipleEntries(entries) {
+  console.log(entries);
+  entries.forEach(function(entry) {
+    renderEntry(entry);
+  });
+}
 // this function takes a single entry and renders it to the page
 function renderEntry(entry) {
  console.log('rendering entry', entry);
 
-// $.get('/event/findAll', function (items) {
-//   items.forEach(function(item){
-// console.log(item);
-//     var newHTML = "fieldset" + item + "/fieldset";
-//     $('#savedMeals').prepend(newHTML);
-//   })
-// })
 
+$('#btn btn-danger').on('submit', function deleteEntry(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'DELETE',
+      url: '/api/entry/:EntryId',
+      success: removeEntries
+})
+})
+function removeEntries(entries) {
+var deletedEntryId = data._id
+console.log('entries removed', deletedEntryId);
+$('div[data-entry-id=' + deletedEntryId + ']').remove();
+}
+//TODO: Prevent Default
+  // AJAX REQUEST
+  // delete
+  // url; api/entry/ + entryID you grab from the delete button
+  // success: on success, remove the entry from the view via jquery.
+// });
  var entryHtml = (`
 
-   <form id="entry" action="" method="post">
-       <fieldset>
-           <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" required autofocus>
-       </fieldset>
-       <hr>
-       <fieldset>
-           <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;"required>
-       </fieldset>
-       <hr>
-       <fieldset>
-           <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px;">
-       </fieldset>
-       <hr>
-       <fieldset>
-           <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;">
-       </fieldset>
-       <hr>
-       <fieldset>
-           <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 275px;"></textarea>
+   <form id="entry" action="" method="post" >
+
+      <fieldset>
+           <span>${entry.userName}</span>
        </fieldset>
        <fieldset>
-           <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+           <span>${entry.dishName}</span>
+       </fieldset>
+       <fieldset>
+           <span>${entry.origin}</span>
+       </fieldset>
+       <fieldset>
+           <span>${entry.calories}</span>
+       </fieldset>
+       <fieldset>
+           <span>${entry.ingredients}</span>
+       </fieldset>
+       <fieldset>
+           <button class= 'btn btn-info edit-entry'>Edit Entry</button>
+       </fieldset>
+       <fieldset>
+           <button class= 'btn btn-danger delete-entry' data-id="${entry._id}">Delete Entry</button>
        </fieldset>
    </form>
    `);
  $('#savedMeals').prepend(entryHtml);
 }
 
-// When the add entry button is clicked, display the modal
-// function handleAddEntryClick(e) {
-//  console.log('add-entry clicked');
-//  var currentEntryId = $(this).closest('.album').data('entry-id');
-//  console.log('id', currentEntryId);
-//  $('#entryModal').data('user-id', currentUserId);
-//  $('#entryModal').modal(); //display the modal
-// }
-//
-// //when the entry modal submit button is clicked
-// function handleNewEntrySubmit(e) {
-//  e.preventDefault();
-//  var $modal = $('#modal');
-//  var $entryField = $modal.find('entryField');
-
-
- // get data from modal fields
- // the server expects to see the keys,..... so we MUST use them.
-
-
-//Get data from modal fields
+// When the add entry button is clicked
+function handleAddEntryClick(e) {
+ console.log('add-entry clicked');
+ var currentEntryId = $(this).closest('.entry').data('entry-id');
+ console.log('id', currentEntryId);
+}

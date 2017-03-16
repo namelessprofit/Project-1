@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -25,12 +24,20 @@
     <!-- Theme CSS -->
     <link href="/css/creative.min.css" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
 </head>
 
@@ -83,23 +90,23 @@
                     <div class="container">
                         <form id="entry" action="/entry/create" method="post">
                             <fieldset>
-                                <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" name="userName" required>
+                                <input placeholder="User Name" type="text" style="width: 506px;height: 36px;" id="userName" required>
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;" name="dishName" required>
+                                <input placeholder="Dish Name" type="text" tabindex="2" style="width: 506px;height: 36px;" id="dishName" required>
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px; "name="origin">
+                                <input placeholder="Country of origin" type="text" tabindex="3" style="width: 506px;height: 36px; " id="origin">
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;" name="calories">
+                                <input placeholder="Calories" type="text" tabindex="3" style="width: 506px;height: 36px;" id="calories">
                             </fieldset>
                             <hr>
                             <fieldset>
-                                <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 275px;" name="ingredients"></textarea>
+                                <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 175px;" id="ingredients"></textarea>
                             </fieldset>
                             <fieldset>
                                 <button type="submit" id="contact-submit">Submit</button>
@@ -188,20 +195,5 @@
         </div>
       </section>
 
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/creative.min.js"></script>
-
 </body>
-
 </html>
