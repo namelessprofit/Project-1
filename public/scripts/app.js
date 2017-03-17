@@ -54,6 +54,7 @@ function renderEntry(entry) {
     var entryHtml = (`
 
 <div class="entry-class" data-meal-id=${entry._id}>
+<div class="col-md-4" ; style="padding-top: 65px;">
       <fieldset>
            <span>${entry.userName}</span>
        </fieldset>
@@ -74,6 +75,7 @@ function renderEntry(entry) {
        </fieldset>
       <button class='btn btn-danger taco'>Delete Entry</button>
 </div>
+</div>
    `);
     $('#savedMeals').prepend(entryHtml);
 };
@@ -85,7 +87,7 @@ function removeEntries(e) {
         method: 'DELETE',
         success: deleteEntrySuccess
     });
-    location.reload();  
+    location.reload();
 };
 
 function deleteEntrySuccess(data) {

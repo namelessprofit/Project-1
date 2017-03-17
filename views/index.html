@@ -77,8 +77,8 @@
             <div class="header-content-inner">
                 <h1 id="homeHeading">Healthy Diary</h1>
                 <hr>
-                <p>Store all of your favorite meals and recipes in one place and keep it with you everywhere you go. Your diary will be stored in the cloud so no need to worry about wasting space on your phone.</p>
-                <a href="#entryForm" class="btn btn-primary btn-xl page-scroll">My diary</a>
+                <p>Keep track of your meals!</p>
+                <a href="#entryForm" class="btn btn-primary btn-xl page-scroll">Log Meal</a>
             </div>
         </div>
     </header>
@@ -86,7 +86,7 @@
     <section class="bg-primary" id="entryForm" style="padding-top: 65px;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-8 col-lg-offset-2 text-center" style="margin-left: 0px;">
                     <div class="container">
                         <form id="entry" action="/entry/create" method="post">
                             <fieldset>
@@ -109,7 +109,7 @@
                                 <textarea placeholder="Ingredients/allergies" tabindex="5" required style="width: 506px;height: 175px;" id="ingredients"></textarea>
                             </fieldset>
                             <fieldset>
-                                <button type="submit" id="contact-submit">Submit</button>
+                                <button class="btn" type="submit" id="contact-submit">Submit</button>
                             </fieldset>
                         </form>
                     </div>
@@ -122,7 +122,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Your saved meals and recipes.</h2>
+                    <h2 class="section-heading">Your saved meals.</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -131,11 +131,6 @@
             <div class="row" id="savedMeals">
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-
                     </div>
                 </div>
             </div>
