@@ -52,18 +52,19 @@ db.User.remove({}, function(err, user) {
         }
         console.log("all users:", users);
         console.log("created", user.length, "users");
-    });
-});
 
+        // TODO: This ensures everything will be removed and created BEFORE process exit.
+        db.Entry.remove({}, function(err, entry) {
 
-db.Entry.remove({}, function(err, entry) {
+          db.Entry.create(entryList, function(err, entries) {
+            if (err) {
+              return console.log('ERROR', err);
+            }
+            console.log("all entries:", entries);
+            console.log("created", entryList.length, "entries");
+            process.exit();
+          });
+        });
 
-    db.Entry.create(entryList, function(err, entries) {
-        if (err) {
-            return console.log('ERROR', err);
-        }
-        console.log("all entries:", entries);
-        console.log("created", entryList.length, "entries");
-        process.exit();
     });
 });

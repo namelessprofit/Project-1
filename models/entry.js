@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var EntrySchema = new Schema({
-    userName: String,
+    userName: {type: Schema.Types.ObjectId, ref: 'User'},
     dishName: String,
     origin: String,
     calories: Number,
