@@ -37,19 +37,22 @@ $(document).ready(function() {
         console.log('stuff!!', deletedEntryId);
         console.log($(this));
         console.log("I AM CLICKED FOR DELETE");
-        var deletePath = '/api/entry/' + deletedEntryId
+        var deletePath = '/api/entry/' + deletedEntryId;
         $.ajax({
-          method: "DESTROY"
-          url: deletePath,
-          success: function(entry) {
-            // TODO: Removed at production
-            console.log('deleted post');
-            removeEntry(deletedEntryId); // render the servers response
-          },
-          error: //TODO: Enter error handler here
-        });
+            method: "DESTROY",
+            url: deletePath,
+            success: function(entry) {
+                // TODO: Removed at production
+                console.log('deleted post');
+                removeEntry(deletedEntryId); // render the servers response
+            }
+            // error: //TODO: Enter error handler here
 
-//document ready closes here.
+
+            //document ready closes here.
+        });  //syntax error states this is an unexpected token. Can you explain what I am doing wrong here?
+           // These appear to be closing correctly to me.
+    });
 });
 
 //function shows multiple entries that are saved
