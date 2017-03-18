@@ -22,7 +22,7 @@ function create(req, res) {
         "origin": req.body.origin,
         "calories": req.body.calories,
         "ingredients": req.body.ingredients
-    })
+    });
     newEntry.save(function(err, savedEntry) {
         if (err) {
           console.log(err);
