@@ -31,27 +31,20 @@ $(document).ready(function() {
     });
 
     //deleting a meal entry
-    $('#savedMeals').on('click', '.taco', function(e) {
+    $('#savedMeals').on('click', '.deleteButton', function(e) {
         var deletedEntryId = $(this).closest('.entry-class').data('meal-id');
         // TODO: Removed at production
         console.log('stuff!!', deletedEntryId);
         console.log($(this));
         console.log("I AM CLICKED FOR DELETE");
-        var deletePath = '/api/entry/' + deletedEntryId;
-        $.ajax({
-            method: "DESTROY",
-            url: deletePath,
-            success: function(entry) {
-                // TODO: Removed at production
-                console.log('deleted post');
-                removeEntry(deletedEntryId); // render the servers response
-            }
-            // error: //TODO: Enter error handler here
+        removeEntries(deletedEntryId);
 
+    });
 
-            //document ready closes here.
-        });  //syntax error states this is an unexpected token. Can you explain what I am doing wrong here?
-           // These appear to be closing correctly to me.
+    $('#savedMeals').on('click','.burrito',function(e){
+      var editEntryId = $(this).closest('.entry-class').data('meal-id');
+      updateEntry(editEntryId);
+      console.log('clicked for edit');
     });
 });
 
@@ -89,18 +82,28 @@ function renderEntry(entry) {
                  <span>${entry.ingredients}</span>
              </fieldset>
              <fieldset>
-                 <button class='btn btn-info edit-entry'>Edit Entry</button>
+                 <button class='btn btn-info burrito'>Edit Entry</button>
              </fieldset>
-            <button class='btn btn-danger taco'>Delete Entry</button>
+            <button class='btn btn-danger deleteButton'>Delete Entry</button>
       </div>
       </div>
    `);
     $('#savedMeals').prepend(entryHtml);
 };
 
-function removeEntry(removeId) {
+function removeEntries(removeId) {
     //TODO: find the 'card' with the data-entry-id of removeID and clear that off of your view
-    $('div[data-entry-id=' + deletedEntryId + ']').remove();
+    $.ajax({
+      url:'api/entry/' + removeId,
+      method: 'DELETE',
+      success: deleteEntrySuccess
+    });
+    location.reload();
+};
+
+function deleteEntrySuccess(data){
+  var deletedEntryId = data._id;
+  $('div[data-entry-id=' +deletedEntryId + ']').remove();
 };
 
 
