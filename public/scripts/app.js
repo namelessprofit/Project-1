@@ -37,21 +37,8 @@ $(document).ready(function() {
         console.log('stuff!!', deletedEntryId);
         console.log($(this));
         console.log("I AM CLICKED FOR DELETE");
-        var deletePath = '/api/entry/' + deletedEntryId;
-        $.ajax({
-            method: "DESTROY",
-            url: deletePath,
-            success: function(entry) {
-                // TODO: Removed at production
-                console.log('deleted post');
-                removeEntry(deletedEntryId); // render the servers response
-            }
-            // error: //TODO: Enter error handler here
+        removeEntries(deletedEntryId);
 
-
-            //document ready closes here.
-        });  //syntax error states this is an unexpected token. Can you explain what I am doing wrong here?
-           // These appear to be closing correctly to me.
     });
 });
 
@@ -98,9 +85,19 @@ function renderEntry(entry) {
     $('#savedMeals').prepend(entryHtml);
 };
 
-function removeEntry(removeId) {
+function removeEntries(removeId) {
     //TODO: find the 'card' with the data-entry-id of removeID and clear that off of your view
-    $('div[data-entry-id=' + deletedEntryId + ']').remove();
+    $.ajax({
+      url:'api/entry/' + removeId,
+      method: 'DELETE',
+      success: deleteEntrySuccess
+    });
+    location.reload();
+};
+
+function deleteEntrySuccess(data){
+  var deletedEntryId = data._id;
+  $('div[data-entry-id=' +deletedEntryId + ']').remove();
 };
 
 

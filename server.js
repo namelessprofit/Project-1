@@ -18,6 +18,8 @@ app.get('/', function homepage (req, res) {
 app.get('/api/entry', controller.userEntry.index);
 app.post('/api/entry', controller.userEntry.create);
 app.delete('/api/entry/:EntryId', controller.userEntry.destroy);
+app.put('api/entry/:EntryId', controller.userEntry.update);
+
 
 // app.put('/api/entry/:EntryId', controller.userEntry.update);
 

@@ -18,6 +18,12 @@ function index(req, res) {
                 method: "DELETE",
                 path: "/api/userEntry/:EntryId",
                 controller: "controllerEntry.destroy"
+            },
+            {
+              //api/entry/:entryId
+              method: 'PUT',
+              path: "/api/userEntry/:EntryId",
+              controller: "controllerEntry.update"
             }
 
         ]

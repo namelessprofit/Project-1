@@ -55,16 +55,25 @@ function update(req, res) {
       dishName: req.body.dishName
     }
 
-    Entry.findOneAndUpate({_id: req.params.entryId}, updateInfo, function(err, foundEntry) {
+    db.Entry.findOneAndUpate({_id: req.params.entryId}, updateInfo, function(err, foundEntry) {
       if(err){console.log("Err,", err); res.send(404);}
         // TODO: Remove console.logs from production level code
+        foundEntry.origin = updateInfo.origin;
+        foundEntry.ingredients= updateInfo.ingredients;
+        foundEntry.calories = updateInfo.calories;
+        foundEntry.dishName = updateInfo.dishName;
+        foundEntry.save(function(err, savedEntry){
+          if(err) {console.log('saving altered entry failed');}
+          res.json(foundEntry);
+        });
         console.log(foundEntry);
-        res.json(foundEntry);
+
     });
 }
 
 module.exports = {
     index: index,
     create: create,
-    destroy: destroy
+    destroy: destroy,
+    update: update
 };
