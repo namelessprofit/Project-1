@@ -46,30 +46,49 @@ function destroy(req, res) {
     });
 }
 
-function update(req, res) {
+//function update(req, res) {
     // PUT '/api/entry/:entryId'
-    var updateInfo = {
-      origin: req.body.origin,
-      ingredients: req.body.ingredients,
-      calories: req.body.calories,
-      dishName: req.body.dishName
-    }
+// //    var updateInfo = {
+//       origin: req.body.origin,
+//       ingredients: req.body.ingredients,
+//       calories: req.body.calories,
+//       dishName: req.body.dishName
+//     }
+//
+//     db.Entry.findOneAndUpate({_id: req.params.entryId}, updateInfo, function(err, foundEntry) {
+//       if(err){console.log("Err,", err); res.send(404);}
+//         // TODO: Remove console.logs from production level code
+//         foundEntry.origin = updateInfo.origin;
+//         foundEntry.ingredients= updateInfo.ingredients;
+//         foundEntry.calories = updateInfo.calories;
+//         foundEntry.dishName = updateInfo.dishName;
+//         foundEntry.save(function(err, savedEntry){
+//           if(err) {console.log('saving altered entry failed');}
+//           res.json(foundEntry);
+//         });
+//         console.log(foundEntry);
+//
+//     });
+//
+// }
 
-    db.Entry.findOneAndUpate({_id: req.params.entryId}, updateInfo, function(err, foundEntry) {
-      if(err){console.log("Err,", err); res.send(404);}
-        // TODO: Remove console.logs from production level code
-        foundEntry.origin = updateInfo.origin;
-        foundEntry.ingredients= updateInfo.ingredients;
-        foundEntry.calories = updateInfo.calories;
-        foundEntry.dishName = updateInfo.dishName;
-        foundEntry.save(function(err, savedEntry){
-          if(err) {console.log('saving altered entry failed');}
-          res.json(foundEntry);
-        });
-        console.log(foundEntry);
+function update(req, res){
 
+  console.log("updating function");
+  db.Entry.findById(req.params.EntryId, function(err, foundEntry) {
+    if(err) { console.log('entryController.update error', err); }
+    foundEntry.origin = req.body.origin;
+    foundEntry.ingredients = req.body.ingredients;
+    foundEntry.calories = req.body.calories;
+    foundEntry.dishName = req.body.dishName;
+    foundEntry.save(function(err, savedEntry) {
+      if(err) { console.log('saving altered entry failed'); }
+      res.json(savedEntry);
     });
+  });
 }
+
+
 
 module.exports = {
     index: index,

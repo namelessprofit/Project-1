@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
 
     //deleting a meal entry
-    $('#savedMeals').on('click', '.taco', function(e) {
+    $('#savedMeals').on('click', '.deleteButton', function(e) {
         var deletedEntryId = $(this).closest('.entry-class').data('meal-id');
         // TODO: Removed at production
         console.log('stuff!!', deletedEntryId);
@@ -39,6 +39,12 @@ $(document).ready(function() {
         console.log("I AM CLICKED FOR DELETE");
         removeEntries(deletedEntryId);
 
+    });
+
+    $('#savedMeals').on('click','.burrito',function(e){
+      var editEntryId = $(this).closest('.entry-class').data('meal-id');
+      updateEntry(editEntryId);
+      console.log('clicked for edit');
     });
 });
 
@@ -76,9 +82,9 @@ function renderEntry(entry) {
                  <span>${entry.ingredients}</span>
              </fieldset>
              <fieldset>
-                 <button class='btn btn-info edit-entry'>Edit Entry</button>
+                 <button class='btn btn-info burrito'>Edit Entry</button>
              </fieldset>
-            <button class='btn btn-danger taco'>Delete Entry</button>
+            <button class='btn btn-danger deleteButton'>Delete Entry</button>
       </div>
       </div>
    `);
